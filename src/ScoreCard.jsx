@@ -16,6 +16,14 @@ function ScoreCard({ numPlayers = 2 }) {
 			});
 		});
 	};
+	const reset = () => {
+		setCard((prevCard) => {
+			return [...prevCard].map((i) => {
+				return (i = 0);
+			});
+		});
+	};
+
 	const cardUnit = card.map((unit, id) => (
 		<li key={uuidv4()}>
 			<p id={id}>
@@ -24,7 +32,12 @@ function ScoreCard({ numPlayers = 2 }) {
 			<button onClick={() => increment(id)}>+1</button>
 		</li>
 	));
-	return <ul>{cardUnit}</ul>;
+	return (
+		<>
+			<ul>{cardUnit}</ul>
+			<button onClick={reset}>Reset</button>
+		</>
+	);
 }
 
 export default ScoreCard;
