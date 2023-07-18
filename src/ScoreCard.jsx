@@ -8,7 +8,7 @@ function ScoreCard({ numPlayers = 2, target = 3 }) {
 
 	const increment = (index) => {
 		setCard((oldCard) => {
-			return [...oldCard].map((i, ind) => {
+			return oldCard.map((i, ind) => {
 				if (index === ind && i !== target) {
 					return i + 1;
 				} else {
@@ -19,11 +19,7 @@ function ScoreCard({ numPlayers = 2, target = 3 }) {
 	};
 
 	const reset = () => {
-		setCard((prevCard) => {
-			return [...prevCard].map((i) => {
-				return (i = 0);
-			});
-		});
+		setCard(generateArr(numPlayers));
 	};
 
 	const isTarget = (n) => n === target;
